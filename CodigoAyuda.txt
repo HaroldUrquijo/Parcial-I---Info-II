@@ -1,4 +1,0 @@
-int pinData = 10;
-int pinLatch = 12;
-int pinClock = 13; 
-		

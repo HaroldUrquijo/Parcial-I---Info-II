@@ -1,0 +1,30 @@
+int latchPin = 3;  
+int clockPin = 4; 
+int dataPin = 2;  
+
+// Matriz de patrones para representar caracteres
+byte patterns[] = {
+  B00000000,
+  B00011000,
+  B00100100,
+  B01000010,
+  B10000001,
+  B01000010,
+  B00100100,
+  B00011000
+};
+
+void setup() {
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+}
+
+void loop() {
+  for (int i = 0; i < 8; i++) {
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin, clockPin, LSBFIRST, patterns[i]);
+    digitalWrite(latchPin, HIGH);
+    delay(200); // Espera 1 segundo para mostrar cada patrón
+  }
+}
